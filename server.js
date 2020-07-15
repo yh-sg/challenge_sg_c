@@ -49,6 +49,8 @@ server.use(function(request, response, next) {
 
 server.use("/auth", require("./routes/auth.route"));
 
+//server.use("/")
+
 server.listen(process.env.PORT, () =>
   console.log(`connected to express on ${process.env.PORT}`)
 );

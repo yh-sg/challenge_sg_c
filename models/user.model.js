@@ -22,9 +22,19 @@ const userSchema = Schema({
   password: {
     type: String,
     required: true
+  },
+  usertype:{
+    type: String,
+    enum: ["senior", "helper"],
+    required: true
+  },
+  isAdmin: {
+    type: Boolean,
+    default: false
   }
 });
 
+//before save, find the password and bcrypt the password
 userSchema.pre("save", function(next) {
   let user = this;
   // Only hash the password if it has been modified (or is new)
