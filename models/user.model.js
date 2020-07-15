@@ -1,7 +1,20 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 const bcrypt = require("bcrypt");
 
-var userSchema = new mongoose.Schema({
+const userSchema = Schema({
+  name:{
+    type: String,
+    required: true
+  },
+  address:{
+    type: String,
+    required: true
+  },
+  age:{
+    type: Number,
+    required: true
+  },
   phone: {
     type: String,
     required: true
@@ -13,12 +26,12 @@ var userSchema = new mongoose.Schema({
 });
 
 userSchema.pre("save", function(next) {
-  var user = this;
+  let user = this;
   // Only hash the password if it has been modified (or is new)
   if (!user.isModified("password")) return next();
 
   //hash the password
-  var hash = bcrypt.hashSync(user.password, 10);
+  let hash = bcrypt.hashSync(user.password, 10);
 
   // Override the cleartext password with the hashed one
   user.password = hash;
