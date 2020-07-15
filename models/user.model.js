@@ -31,7 +31,21 @@ const userSchema = Schema({
   isAdmin: {
     type: Boolean,
     default: false
-  }
+  },
+  list:[
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "List",
+    },
+  ]
+  // isHelper: {
+  //   type: Boolean,
+  //   default: false
+  // },
+  // isSenior: {
+  //   type: Boolean,
+  //   default: false
+  // }
 });
 
 //before save, find the password and bcrypt the password

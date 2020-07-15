@@ -6,15 +6,15 @@ const listSchema = Schema({
             {
                items:[
                    {
-                       item: "",
-                       quantity: 0
+                       item: String,
+                       quantity: Number
                    }
                ],
-               deliveryDate:"",
-               status: 0 // 0/ 1 / 2
+               deliveryDate: String,
+               status: Number // 0 - free,1 - inProgress and 2 - fulfilled
             }
        ]
 })
 
-const List = mongoose.model("List", userSchema);
+const List = mongoose.model("List", listSchema);
 module.exports = List;

@@ -1,0 +1,12 @@
+<h2>List of Seniors</h2>
+
+<% if(currentUser.isAdmin) {%>
+    Only Admin can see this
+<% } %>
+
+<ul>
+    <% users.forEach(user => { %>
+        <% if(user.usertype == "senior"){ %>
+        <li><%= user.name %>, <%= user.address %></li>
+    <% }}); %>
+</ul>

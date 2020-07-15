@@ -20,8 +20,13 @@ router.post("/signup", async (req, res) => {
       age,
       phone,
       password,
-      usertype
+      usertype,
     })
+    // if (usertype == "senior") {
+    //   user.isSenior = true;
+    // } else {
+    //   user.isHelper = true;
+    // }
 
     let savedUser = await user.save();
 
@@ -41,7 +46,7 @@ router.get("/signin", (req,res)=>{
 router.post(
   "/signin",
   passport.authenticate("local", {
-    successRedirect: "/home", //after login success
+    successRedirect: "/", //after login success
     failureRedirect: "/auth/signin", //if fail
     failureFlash: "Invalid Username or Password",
     successFlash: "You have logged In!"
